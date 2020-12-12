@@ -5,20 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Courses {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class CourseDTO {
     private Long id;
     private String name;
     private String description;
+    private int duration;
 
-    public Courses(){
+    public CourseDTO(){
     }
 
-    public Courses(String name, String description) {
+    public CourseDTO(String name, String description, int duration) {
         this.name = name;
         this.description = description;
+        this.duration = duration;
     }
 
     public Long getId() {
@@ -45,12 +44,21 @@ public class Courses {
         this.description = description;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
     @Override
     public String toString() {
-        return "Courses{" +
+        return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", duration=" + duration +
                 '}';
     }
 }

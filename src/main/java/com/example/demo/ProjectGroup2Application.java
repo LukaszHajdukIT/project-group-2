@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.coursers.Courses;
+import com.example.demo.coursers.Course;
 import com.example.demo.coursers.CoursesRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,9 +17,9 @@ public class ProjectGroup2Application {
 	@Bean
 	public CommandLineRunner addCourses(CoursesRepository repository){
 		return (args -> {
-			repository.save(new Courses("Java", "Java Basics"));
+//			repository.save(new Course("Java", "Java Basics", 8));
 
-			for (Courses course : repository.findAll()){
+			for (Course course : repository.findAll()){
 				System.out.println(course.toString());
 			}
 		});
