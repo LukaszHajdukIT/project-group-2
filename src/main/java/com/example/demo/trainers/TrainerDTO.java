@@ -11,7 +11,7 @@ public class TrainerDTO {
     private String lastName;
     private Long pesel;
 
-    public TrainerDTO(){
+    public TrainerDTO() {
     }
 
     public TrainerDTO(String firstName, String lastName, Long pesel) {

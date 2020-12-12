@@ -1,11 +1,11 @@
 package com.example.demo.trainers;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class TrainerService {
 
-    final TrainersRepository trainersRepository;
+    private final TrainersRepository trainersRepository;
 
     public TrainerService(TrainersRepository trainersRepository) {
         this.trainersRepository = trainersRepository;
@@ -15,13 +15,12 @@ public class TrainerService {
         trainersRepository.save(trainer(trainerDTO));
     }
 
-   private Trainer trainer(TrainerDTO trainerDTO){
+    private Trainer trainer(TrainerDTO trainerDTO) {
         Trainer trainer = new Trainer();
         trainer.setId(trainerDTO.getId());
         trainer.setFirstName(trainerDTO.getFirstName());
         trainer.setLastName(trainerDTO.getLastName());
         trainer.setPesel(trainerDTO.getPesel());
         return trainer;
-   };
-
+    }
 }
