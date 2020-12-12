@@ -1,23 +1,20 @@
 package com.example.demo.trainers;
 
-import org.springframework.stereotype.Controller;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import javax.persistence.*;
-
-@Entity
-public
-class Trainers {
-    @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+public class TrainerDTO {
     private Long id;
     private String firstName;
     private String lastName;
-    private int pesel;
+    private Long pesel;
 
-    public Trainers(){
+    public TrainerDTO(){
     }
 
-    public Trainers(String firstName, String lastName, int pesel) {
+    public TrainerDTO(String firstName, String lastName, Long pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
@@ -47,11 +44,11 @@ class Trainers {
         this.lastName = lastName;
     }
 
-    public int getPesel() {
+    public Long getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(Long pesel) {
         this.pesel = pesel;
     }
 

@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.trainers.Trainers;
+import com.example.demo.trainers.Trainer;
 import com.example.demo.trainers.TrainersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,9 +17,9 @@ public class ProjectGroup2Application {
 	@Bean
 	public CommandLineRunner addTrainers(TrainersRepository repository){
 		return (args -> {
-			repository.save(new Trainers("Marcin", "Jasiński", 123456789));
+//			repository.save(new Trainer("Marcin", "Jasiński", (long) 28366372));
 
-		for (Trainers trainer : repository.findAll())
+		for (Trainer trainer : repository.findAll())
 			System.out.println(trainer.toString());
 
 		});
