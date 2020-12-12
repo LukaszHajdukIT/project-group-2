@@ -6,10 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/courses")
 public class CourseController {
 
-    CourseService courseService;
+   private final CourseService courseService;
+
+    public CourseController(CourseService courseService) {
+        this.courseService = courseService;
+    }
 
     @PostMapping
     public void addCourse(@RequestBody CourseDTO courseDTO){

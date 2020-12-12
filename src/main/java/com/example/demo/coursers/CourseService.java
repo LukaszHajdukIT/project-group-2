@@ -1,11 +1,12 @@
 package com.example.demo.coursers;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CourseService {
 
-   final CoursesRepository coursesRepository;
+   private final CoursesRepository coursesRepository;
 
     public CourseService(CoursesRepository coursesRepository) {
         this.coursesRepository = coursesRepository;
