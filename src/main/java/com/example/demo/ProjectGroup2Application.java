@@ -18,6 +18,10 @@ public class ProjectGroup2Application {
 	public CommandLineRunner addTrainers(TrainersRepository repository){
 		return (args -> {
 			repository.save(new Trainers("Marcin", "Jasiński", 123456789));
+
+		for (Trainers trainer : repository.findAll())
+			System.out.println(trainer.toString());
+
 		});
 	}
 
