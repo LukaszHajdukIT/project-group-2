@@ -18,6 +18,10 @@ public class ProjectGroup2Application {
 	public CommandLineRunner addCourses(CoursesRepository repository){
 		return (args -> {
 			repository.save(new Courses("Java", "Java Basics"));
+
+			for (Courses course : repository.findAll()){
+				System.out.println(course.toString());
+			}
 		});
 	}
 }
