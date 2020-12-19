@@ -21,7 +21,8 @@ public class CourseController {
         if (courseService.addCourse(courseDTO)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+
     }
 
     @GetMapping
