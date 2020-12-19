@@ -1,6 +1,7 @@
 package com.example.demo.trainers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +9,21 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 class TrainerControllerTest {
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private TrainerController trainerController;
 
@@ -46,7 +53,6 @@ class TrainerControllerTest {
         trainerDTO.setPesel(567890L);
 
         String content = contentAsJson(trainerDTO);
-        System.out.println(content);
 
         mockMvc.perform(
                 post("/trainers")
@@ -54,9 +60,27 @@ class TrainerControllerTest {
                         .content(content)
         )
                 .andExpect(status().isOk());
+
+        MvcResult result = mockMvc.perform(
+                get("/trainers"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        List<TrainerDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(),
+                new TypeReference<List<TrainerDTO>>(){});
+
+        assertEquals(actual.get(0).getFirstName(),"Ania");
+        assertEquals(actual.get(0).getLastName(),"Niemiec");
+        assertEquals(actual.get(0).getPesel(), 567890L);
+
+
     }
 
     private String contentAsJson(TrainerDTO trainerDTO) throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(trainerDTO);
+        return objectMapper.writeValueAsString(trainerDTO);
     }
+
+
+
 }
