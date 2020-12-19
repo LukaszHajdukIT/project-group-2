@@ -1,22 +1,21 @@
 package com.example.demo.trainers;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/trainers")
 public class TrainerController {
 
+    private final TrainerService trainerService;
+
     public TrainerController(TrainerService trainerService) {
         this.trainerService = trainerService;
     }
 
-    TrainerService trainerService;
-
-    @PostMapping
+   @PostMapping
     public void addTrainer(@RequestBody TrainerDTO trainerDTO) {
         trainerService.addTrainer(trainerDTO);
     }
+
+
 }
