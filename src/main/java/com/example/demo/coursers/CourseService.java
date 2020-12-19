@@ -8,28 +8,37 @@ import java.util.List;
 @Component
 public class CourseService {
 
-   private final CoursesRepository coursesRepository;
+    private final CoursesRepository coursesRepository;
 
     public CourseService(CoursesRepository coursesRepository) {
         this.coursesRepository = coursesRepository;
     }
 
-    public void addCourse(CourseDTO courseDTO) {
-        coursesRepository.save(course(courseDTO));
+    public boolean addCourse(CourseDTO courseDTO) {
+        if (nameAlreadyExists(courseDTO.getName())) {
+            return false;
+        } else {
+            coursesRepository.save(course(courseDTO));
+            return true;
+        }
+    }
+
+    private boolean nameAlreadyExists(String courseName) {
+        return !coursesRepository.findCourseByName(courseName).isEmpty();
     }
 
     public List<CourseDTO> getCourses() {
         List<Course> allCourses = coursesRepository.findAll();
         List<CourseDTO> allCoursesDTO = new ArrayList<>();
 
-        for (Course course: allCourses) {
+        for (Course course : allCourses) {
             CourseDTO courseDTO = courseDTO(course);
             allCoursesDTO.add(courseDTO);
         }
         return allCoursesDTO;
     }
 
-    private Course course(CourseDTO courseDTO){
+    private Course course(CourseDTO courseDTO) {
         Course course = new Course();
         course.setId(courseDTO.getId());
         course.setName(courseDTO.getName());
@@ -38,7 +47,7 @@ public class CourseService {
         return course;
     }
 
-    private CourseDTO courseDTO(Course course){
+    private CourseDTO courseDTO(Course course) {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setId(course.getId());
         courseDTO.setName(course.getName());

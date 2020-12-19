@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -38,7 +39,7 @@ class CourseControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldAddCourseToRepository(){
+    public void shouldAddCourseToRepository() {
         //when
         courseController.addCourse(new CourseDTO("Java", "Basics", 8));
         //then
@@ -47,7 +48,7 @@ class CourseControllerTest {
     }
 
     @Test
-    public void shouldAddTrainer() throws Exception {
+    public void shouldShowAddedCourse() throws Exception {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setName("Java");
         courseDTO.setDescription("Basics");
@@ -77,5 +78,37 @@ class CourseControllerTest {
 
     private String contentAsJson(CourseDTO courseDTO) throws JsonProcessingException {
         return objectMapper.writeValueAsString(courseDTO);
+    }
+
+    @Test
+    public void shouldNotAddCourseWithAlreadyExistingName() throws Exception {
+        //given
+        CourseDTO courseDTO = new CourseDTO();
+        courseDTO.setName("Java");
+        courseDTO.setDescription("Basics");
+        courseDTO.setDuration(2);
+
+        //when
+        String content = contentAsJson(courseDTO);
+        mockMvc.perform(
+                post("/courses")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isOk()
+                );
+
+        mockMvc.perform(
+                post("/courses")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isConflict()
+                );
+
+        List<Course> courseByName = coursesRepository.findCourseByName("Java");
+
+        //then
+        assertThat(courseByName.size()).isEqualTo(1);
     }
 }
