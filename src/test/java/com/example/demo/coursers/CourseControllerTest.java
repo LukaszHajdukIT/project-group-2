@@ -47,7 +47,7 @@ class CourseControllerTest {
     }
 
     @Test
-    public void test() throws Exception {
+    public void shouldAddTrainer() throws Exception {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setName("Java");
         courseDTO.setDescription("Basics");
