@@ -1,5 +1,7 @@
 package com.example.demo.coursers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -8,19 +10,20 @@ import java.util.List;
 @RequestMapping("/courses")
 public class CourseController {
 
-   private final CourseService courseService;
+    private final CourseService courseService;
 
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
 
     @PostMapping
-    public void addCourse(@RequestBody CourseDTO courseDTO){
-        courseService.addCourse(courseDTO);
+    public ResponseEntity<Void> addCourse(@RequestBody CourseDTO courseDTO) {
+        return courseService.addCourse(courseDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
+
     }
 
     @GetMapping
-    public List<CourseDTO> getCourses(){
-       return courseService.getCourses();
+    public List<CourseDTO> getCourses() {
+        return courseService.getCourses();
     }
 }
