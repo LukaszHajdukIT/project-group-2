@@ -2,6 +2,8 @@ package com.example.demo.trainers;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/trainers")
 public class TrainerController {
@@ -17,5 +19,9 @@ public class TrainerController {
         trainerService.addTrainer(trainerDTO);
     }
 
+    @GetMapping
+    public List<TrainerDTO> getTrainers(){
+        return trainerService.getTrainers();
+    }
 
 }
