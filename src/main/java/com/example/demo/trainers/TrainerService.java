@@ -12,10 +12,10 @@ public class TrainerService {
     }
 
     public void addTrainer(TrainerDTO trainerDTO) {
-        trainersRepository.save(getTrainer(trainerDTO));
+        trainersRepository.save(trainer(trainerDTO));
     }
 
-    private Trainer getTrainer(TrainerDTO trainerDTO) {
+    private Trainer trainer(TrainerDTO trainerDTO) {
         Trainer trainer = new Trainer();
         trainer.setId(trainerDTO.getId());
         trainer.setFirstName(trainerDTO.getFirstName());
