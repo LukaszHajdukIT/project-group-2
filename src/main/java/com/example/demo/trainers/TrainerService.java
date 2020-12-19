@@ -14,14 +14,23 @@ public class TrainerService {
         this.trainersRepository = trainersRepository;
     }
 
-    public void addTrainer(TrainerDTO trainerDTO) {
-        trainersRepository.save(trainer(trainerDTO));
+    public boolean addTrainer(TrainerDTO trainerDTO) {
+        if (trainerAlreadyExists(trainerDTO.getPesel())) {
+            return false;
+        } else {
+            trainersRepository.save(trainer(trainerDTO));
+            return true;
+        }
+    }
+
+    private boolean trainerAlreadyExists(Long trainerName) {
+        return !trainersRepository.findTrainerByPesel(trainerName).isEmpty();
     }
 
     public List<TrainerDTO> getTrainers() {
         List<Trainer> allTrainers = trainersRepository.findAll();
         List<TrainerDTO> allTrainersDTO = new ArrayList<>();
-        for (Trainer trainer: allTrainers) {
+        for (Trainer trainer : allTrainers) {
             TrainerDTO trainerDTO = trainerDTO(trainer);
             allTrainersDTO.add(trainerDTO);
         }

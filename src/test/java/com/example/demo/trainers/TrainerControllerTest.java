@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -39,14 +40,14 @@ class TrainerControllerTest {
     @Test
     public void shouldShowTrainers() {
         //when
-        trainerService.addTrainer(new TrainerDTO("Michał", "Witek", (long) 838383));
+        trainerController.addTrainer(new TrainerDTO("Michał", "Witek", (long) 838383));
         //then
         assertEquals(1, trainersRepository.count());
         assertNotNull(trainersRepository);
     }
 
     @Test
-    public void test() throws Exception {
+    public void shouldShowAddedTrainers() throws Exception {
         TrainerDTO trainerDTO = new TrainerDTO();
         trainerDTO.setFirstName("Ania");
         trainerDTO.setLastName("Niemiec");
@@ -68,19 +69,45 @@ class TrainerControllerTest {
                 .andReturn();
 
         List<TrainerDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(),
-                new TypeReference<List<TrainerDTO>>(){});
+                new TypeReference<List<TrainerDTO>>() {
+                });
 
-        assertEquals(actual.get(0).getFirstName(),"Ania");
-        assertEquals(actual.get(0).getLastName(),"Niemiec");
+        assertEquals(actual.get(0).getFirstName(), "Ania");
+        assertEquals(actual.get(0).getLastName(), "Niemiec");
         assertEquals(actual.get(0).getPesel(), 567890L);
-
-
     }
 
     private String contentAsJson(TrainerDTO trainerDTO) throws JsonProcessingException {
         return objectMapper.writeValueAsString(trainerDTO);
     }
 
+    @Test
+    public void shouldNotAddTwoTrainersWithAlreadyExistingFirstAndLastName() throws Exception {
+        //given
+        TrainerDTO trainerDTO = new TrainerDTO();
+        trainerDTO.setFirstName("Ania");
+        trainerDTO.setLastName("Niemiec");
+        trainerDTO.setPesel(8403240011L);
+        String content = contentAsJson(trainerDTO);
 
+        //when
+        mockMvc.perform(
+                post("/trainers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isOk());
 
+        mockMvc.perform(
+                post("/trainers")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isConflict());
+
+        List<Trainer> trainerByName = trainersRepository.findTrainerByPesel(8403240011L);
+
+        //then
+        assertThat(trainerByName.size()).isEqualTo(1);
+    }
 }
