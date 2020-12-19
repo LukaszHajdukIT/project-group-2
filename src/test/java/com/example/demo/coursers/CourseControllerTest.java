@@ -1,6 +1,7 @@
 package com.example.demo.coursers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +9,22 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
 class CourseControllerTest {
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private CourseController courseController;
 
@@ -46,18 +53,29 @@ class CourseControllerTest {
         courseDTO.setDescription("Basics");
         courseDTO.setDuration(2);
         String content = contentAsJson(courseDTO);
-        System.out.println(content);
         mockMvc.perform(
                 post("/courses")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(content)
         )
                 .andExpect(status().isOk());
+
+        MvcResult result = mockMvc.perform(
+                get("/courses"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        List<CourseDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(),
+                new TypeReference<List<CourseDTO>>() {});
+
+        System.out.println(actual);
+        assertEquals(actual.get(0).getDescription(), "Basics");
+        assertEquals(actual.get(0).getName(), "Java");
+        assertEquals(actual.get(0).getDuration(), 2);
     }
 
     private String contentAsJson(CourseDTO courseDTO) throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(courseDTO);
+        return objectMapper.writeValueAsString(courseDTO);
     }
-
-
 }
