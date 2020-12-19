@@ -2,6 +2,8 @@ package com.example.demo.coursers;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/courses")
 public class CourseController {
@@ -17,5 +19,8 @@ public class CourseController {
         courseService.addCourse(courseDTO);
     }
 
-
+    @GetMapping
+    public List<CourseDTO> getCourses(){
+       return courseService.getCourses();
+    }
 }
