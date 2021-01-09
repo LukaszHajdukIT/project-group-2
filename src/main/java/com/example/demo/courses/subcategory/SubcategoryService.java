@@ -1,7 +1,6 @@
-package com.example.demo.courses.subcategories;
+package com.example.demo.courses.subcategory;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 class SubcategoryService {
 

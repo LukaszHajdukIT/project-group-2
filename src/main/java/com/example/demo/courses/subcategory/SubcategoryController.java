@@ -1,4 +1,4 @@
-package com.example.demo.courses.subcategories;
+package com.example.demo.courses.subcategory;
 
 import org.springframework.web.bind.annotation.*;
 

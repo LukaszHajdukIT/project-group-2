@@ -1,4 +1,4 @@
-package com.example.demo.courses.subcategories;
+package com.example.demo.courses.subcategory;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,11 +12,6 @@ class Subcategory {
     private Long id;
     private String name;
     private String description;
-
-    private Subcategory(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
 
     Subcategory() {
     }
