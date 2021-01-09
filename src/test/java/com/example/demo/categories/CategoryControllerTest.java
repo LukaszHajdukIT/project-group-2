@@ -1,4 +1,4 @@
-package com.example.demo.courses_categories;
+package com.example.demo.categories;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,21 +11,20 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class CoursesCategoriesControllerTest {
+class CategoryControllerTest {
 
     @Autowired
-    private CoursesCategoriesController coursesCategoriesController;
+    private CategoryController categoryController;
 
     @Autowired
-    private CoursesCategoriesRepository coursesCategoriesRepository;
+    private CategoryRepository categoryRepository;
 
     @Test
     public void shouldAddCoursesCategoriesToRepository(){
         //when
-        coursesCategoriesController.addCourseCategory(new CoursesCategoriesDTO("IT", "Kategoria IT"));
+        categoryController.addCourseCategory(new CategoryDTO("IT", "Kategoria IT"));
 
         //then
-        assertEquals(1, coursesCategoriesRepository.count());
-        assertNotNull(coursesCategoriesRepository);
+        assertEquals(1, categoryRepository.count());
     }
 }

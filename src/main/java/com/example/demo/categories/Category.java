@@ -1,4 +1,4 @@
-package com.example.demo.courses_categories;
+package com.example.demo.categories;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,17 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CoursesCategories {
+ class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
 
-    public CoursesCategories() {
+    Category() {
     }
 
-    public CoursesCategories(String name, String description) {
+     private Category(String name, String description) {
         this.name = name;
         this.description = description;
     }

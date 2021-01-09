@@ -1,14 +1,14 @@
-package com.example.demo.courses_categories;
+package com.example.demo.categories;
 
-public class CoursesCategoriesDTO {
+ class CategoryDTO {
     private Long id;
     private String name;
     private String description;
 
-    public CoursesCategoriesDTO() {
+    CategoryDTO() {
     }
 
-    public CoursesCategoriesDTO(String name, String description) {
+    CategoryDTO(String name, String description) {
         this.name = name;
         this.description = description;
     }

@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
+class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,10 +14,10 @@ public class Course {
     private String description;
     private int duration;
 
-    public Course(){
+    Course(){
     }
 
-    public Course(String name, String description, int duration) {
+    private Course(String name, String description, int duration) {
         this.name = name;
         this.description = description;
         this.duration = duration;
