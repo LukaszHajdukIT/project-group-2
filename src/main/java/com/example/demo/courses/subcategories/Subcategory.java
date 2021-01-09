@@ -1,4 +1,4 @@
-package com.example.demo.courses_subcategories;
+package com.example.demo.courses.subcategories;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,19 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CoursesSubcategories {
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
 
-    public CoursesSubcategories(String name, String description) {
+    public Subcategory(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
-    public CoursesSubcategories() {
+    public Subcategory() {
     }
 
     public Long getId() {

@@ -1,17 +1,17 @@
-package com.example.demo.courses_subcategories;
+package com.example.demo.courses.subcategories;
 
-public class CoursesSubcategoriesDTO {
+public class SubcategoryDTO {
 
         private Long id;
         private String name;
         private String description;
 
-        public CoursesSubcategoriesDTO(String name, String description) {
+        public SubcategoryDTO(String name, String description) {
             this.name = name;
             this.description = description;
         }
 
-        public CoursesSubcategoriesDTO() {
+        public SubcategoryDTO() {
         }
 
         public Long getId() {

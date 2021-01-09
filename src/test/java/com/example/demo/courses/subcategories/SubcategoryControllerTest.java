@@ -1,32 +1,28 @@
-package com.example.demo.courses_subcategories;
+package com.example.demo.courses.subcategories;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import javax.transaction.Transactional;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
 @AutoConfigureMockMvc
-class CoursesSubcategoriesControllerTest {
+class SubcategoryControllerTest {
 
     @Autowired
-    private CoursesSubcategoriesController coursesSubcategoriesController;
+    private SubcategoryController subcategoryController;
 
     @Autowired
-    private CoursesSubcategoriesRepository coursesSubcategoriesRepository;
+    private SubcategoryRepository subcategoryRepository;
 
     @Test
     public void shouldAddCoursesSubcategoriesToRepository() {
         //when
-        coursesSubcategoriesController.addCourseSubcategory(new CoursesSubcategoriesDTO("Java", "How to use test"));
+        subcategoryController.addSubcategory(new SubcategoryDTO("Java", "How to use test"));
         //then
-        assertEquals(1, coursesSubcategoriesRepository.count());
-        assertNotNull(coursesSubcategoriesRepository);
+        assertEquals(1, subcategoryRepository.count());
     }
-
 }
