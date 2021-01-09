@@ -42,7 +42,7 @@ class Subcategory {
 
     @Override
     public String toString() {
-        return "CoursesSubcategories{" +
+        return "Subcategory{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
