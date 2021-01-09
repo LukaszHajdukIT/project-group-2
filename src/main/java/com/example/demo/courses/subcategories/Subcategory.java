@@ -6,19 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Subcategory {
+class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
 
-    public Subcategory(String name, String description) {
+    private Subcategory(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
-    public Subcategory() {
+    Subcategory() {
     }
 
     public Long getId() {

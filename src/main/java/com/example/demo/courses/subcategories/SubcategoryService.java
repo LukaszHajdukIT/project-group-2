@@ -3,17 +3,16 @@ package com.example.demo.courses.subcategories;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class SubcategoryService {
+class SubcategoryService {
 
     private final SubcategoryRepository subcategoryRepository;
 
-    public SubcategoryService(SubcategoryRepository subcategoryRepository) {
+    SubcategoryService(SubcategoryRepository subcategoryRepository) {
         this.subcategoryRepository = subcategoryRepository;
     }
 
     @Bean
-    public void addSubcourseCategory(SubcategoryDTO subcategoryDTO) {
+    void addSubcourseCategory(SubcategoryDTO subcategoryDTO) {
         subcategoryRepository.save(courseSubcategories(subcategoryDTO));
     }
 

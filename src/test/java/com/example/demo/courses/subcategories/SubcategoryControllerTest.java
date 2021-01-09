@@ -19,7 +19,7 @@ class SubcategoryControllerTest {
     private SubcategoryRepository subcategoryRepository;
 
     @Test
-    public void shouldAddCoursesSubcategoriesToRepository() {
+    public void shouldAddCoursesSubcategoryToRepository() {
         //when
         subcategoryController.addSubcategory(new SubcategoryDTO("Java", "How to use test"));
         //then

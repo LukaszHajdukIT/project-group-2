@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/subcategory")
-public class SubcategoryController {
+class SubcategoryController {
 
     private final SubcategoryService subcategoryService;
 
-    public SubcategoryController(SubcategoryService subcategoryService) {
+    private SubcategoryController(SubcategoryService subcategoryService) {
         this.subcategoryService = subcategoryService;
     }
 
     @PostMapping
-    public void addSubcategory(@RequestBody SubcategoryDTO subcategoryDTO) {
+    void addSubcategory(@RequestBody SubcategoryDTO subcategoryDTO) {
         subcategoryService.addSubcourseCategory(subcategoryDTO);
     }
 }

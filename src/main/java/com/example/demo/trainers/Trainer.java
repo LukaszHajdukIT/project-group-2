@@ -3,7 +3,7 @@ package com.example.demo.trainers;
 import javax.persistence.*;
 
 @Entity
-public class Trainer {
+class Trainer {
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
@@ -11,10 +11,10 @@ public class Trainer {
     private String lastName;
     private Long pesel;
 
-    public Trainer(){
+    Trainer(){
     }
 
-    public Trainer(String firstName, String lastName, Long pesel) {
+    private Trainer(String firstName, String lastName, Long pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
