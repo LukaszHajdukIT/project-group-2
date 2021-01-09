@@ -42,7 +42,7 @@ import javax.persistence.Id;
 
     @Override
     public String toString() {
-        return "CoursesCategories{" +
+        return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
