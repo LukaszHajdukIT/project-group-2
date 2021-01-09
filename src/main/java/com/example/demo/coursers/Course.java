@@ -17,11 +17,6 @@ class Course {
     Course(){
     }
 
-    private Course(String name, String description, int duration) {
-        this.name = name;
-        this.description = description;
-        this.duration = duration;
-    }
 
     public Long getId() {
         return id;

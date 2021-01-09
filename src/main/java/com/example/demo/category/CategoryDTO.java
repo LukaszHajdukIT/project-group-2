@@ -1,22 +1,14 @@
-package com.example.demo.categories;
+package com.example.demo.category;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
- class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+ class CategoryDTO {
     private Long id;
     private String name;
     private String description;
 
-    Category() {
+    CategoryDTO() {
     }
 
-     private Category(String name, String description) {
+    CategoryDTO(String name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -54,3 +46,4 @@ import javax.persistence.Id;
                 '}';
     }
 }
+

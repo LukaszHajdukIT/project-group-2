@@ -1,4 +1,4 @@
-package com.example.demo.categories;
+package com.example.demo.category;
 
 import org.springframework.web.bind.annotation.*;
 
