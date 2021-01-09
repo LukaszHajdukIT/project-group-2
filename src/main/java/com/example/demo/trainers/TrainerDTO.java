@@ -5,16 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class TrainerDTO {
+class TrainerDTO {
     private Long id;
     private String firstName;
     private String lastName;
     private Long pesel;
 
-    public TrainerDTO() {
+    TrainerDTO() {
     }
 
-    public TrainerDTO(String firstName, String lastName, Long pesel) {
+    TrainerDTO(String firstName, String lastName, Long pesel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;

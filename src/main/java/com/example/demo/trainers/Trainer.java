@@ -3,21 +3,15 @@ package com.example.demo.trainers;
 import javax.persistence.*;
 
 @Entity
-public class Trainer {
+class Trainer {
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
     private Long pesel;
 
-    public Trainer(){
-    }
-
-    public Trainer(String firstName, String lastName, Long pesel) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.pesel = pesel;
+    Trainer() {
     }
 
     public Long getId() {

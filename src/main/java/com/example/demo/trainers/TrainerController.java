@@ -5,19 +5,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/trainers")
-public class TrainerController {
+class TrainerController {
 
     private final TrainerService trainerService;
 
-    public TrainerController(TrainerService trainerService) {
+    TrainerController(TrainerService trainerService) {
         this.trainerService = trainerService;
     }
 
     @PostMapping
-    public ResponseEntity<Void> addTrainer(@RequestBody TrainerDTO trainerDTO) {
+    ResponseEntity<Void> addTrainer(@RequestBody TrainerDTO trainerDTO) {
         if (trainerService.addTrainer(trainerDTO)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
@@ -25,7 +26,7 @@ public class TrainerController {
     }
 
     @GetMapping
-    public List<TrainerDTO> getTrainers() {
+    private List<TrainerDTO> getTrainers() {
         return trainerService.getTrainers();
     }
 }

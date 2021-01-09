@@ -1,20 +1,17 @@
 package com.example.demo.trainers;
 
-import org.springframework.context.annotation.Configuration;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
-public class TrainerService {
+class TrainerService {
 
     private final TrainersRepository trainersRepository;
 
-    public TrainerService(TrainersRepository trainersRepository) {
+    TrainerService(TrainersRepository trainersRepository) {
         this.trainersRepository = trainersRepository;
     }
 
-    public boolean addTrainer(TrainerDTO trainerDTO) {
+    boolean addTrainer(TrainerDTO trainerDTO) {
         if (trainerAlreadyExists(trainerDTO.getPesel())) {
             return false;
         } else {
@@ -27,7 +24,7 @@ public class TrainerService {
         return !trainersRepository.findTrainerByPesel(trainerName).isEmpty();
     }
 
-    public List<TrainerDTO> getTrainers() {
+    List<TrainerDTO> getTrainers() {
         List<Trainer> allTrainers = trainersRepository.findAll();
         List<TrainerDTO> allTrainersDTO = new ArrayList<>();
         for (Trainer trainer : allTrainers) {
