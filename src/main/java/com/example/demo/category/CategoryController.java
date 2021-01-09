@@ -2,6 +2,8 @@ package com.example.demo.category;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/category")
@@ -14,7 +16,13 @@ import org.springframework.web.bind.annotation.*;
     }
 
     @PostMapping
-    void addCourseCategory(@RequestBody CategoryDTO categoryDTO){
+    void addCategory(@RequestBody CategoryDTO categoryDTO){
         categoryService.addCourseCategory(categoryDTO);
     }
+
+    @GetMapping
+    private List<CategoryDTO> getCategory(){
+        return categoryService.getCategory();
+    }
 }
+
