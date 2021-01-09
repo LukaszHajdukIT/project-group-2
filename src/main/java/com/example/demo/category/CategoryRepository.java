@@ -2,5 +2,8 @@ package com.example.demo.category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
- interface CategoryRepository extends JpaRepository<Category, Long> {
+import java.util.List;
+
+interface CategoryRepository extends JpaRepository<Category, Long> {
+ List<Category> findCategoryByName(String name);
 }

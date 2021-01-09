@@ -1,5 +1,7 @@
 package com.example.demo.category;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +18,8 @@ import java.util.List;
     }
 
     @PostMapping
-    void addCategory(@RequestBody CategoryDTO categoryDTO){
-        categoryService.addCourseCategory(categoryDTO);
+    ResponseEntity<Void> addCategory(@RequestBody CategoryDTO categoryDTO) {
+        return categoryService.addCourseCategory(categoryDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
 
     @GetMapping

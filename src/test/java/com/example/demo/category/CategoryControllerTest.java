@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -77,34 +78,34 @@ class CategoryControllerTest {
         return objectMapper.writeValueAsString(categoryDTO);
     }
 
-//    @Test
-//    public void shouldNotAddCategoryWithAlreadyExistingName() throws Exception {
-//        //given
-//        CategoryDTO categoryDTO = new CategoryDTO();
-//        categoryDTO.setName("IT");
-//        categoryDTO.setDescription("IT Kategoria");
-//
-//        //when
-//        String content = contentAsJson(categoryDTO);
-//        mockMvc.perform(
-//                post("/category")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(content)
-//        )
-//                .andExpect(status().isOk()
-//                );
-//
-//        mockMvc.perform(
-//                post("/courses")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(content)
-//        )
-//                .andExpect(status().isConflict()
-//                );
-//
-////        List<Category> courseByName = categoryRepository.findCourseByName("IT");
-//
-//        //then
-////        assertThat(courseByName.size()).isEqualTo(1);
-//    }
+    @Test
+    public void shouldNotAddCategoryWithAlreadyExistingName() throws Exception {
+        //given
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setName("IT");
+        categoryDTO.setDescription("IT Kategoria");
+
+        //when
+        String content = contentAsJson(categoryDTO);
+        mockMvc.perform(
+                post("/category")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isOk()
+                );
+
+        mockMvc.perform(
+                post("/category")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isConflict()
+                );
+
+        List<Category> categoryByName = categoryRepository.findCategoryByName("IT");
+
+//        then
+        assertThat(categoryByName.size()).isEqualTo(1);
+    }
 }

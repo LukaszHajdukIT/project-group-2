@@ -19,7 +19,6 @@ class CourseController {
     @PostMapping
     ResponseEntity<Void> addCourse(@RequestBody CourseDTO courseDTO) {
         return courseService.addCourse(courseDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
-
     }
 
     @GetMapping

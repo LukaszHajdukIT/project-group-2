@@ -10,11 +10,20 @@ class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    void addCourseCategory(CategoryDTO categoryDTO) {
-        categoryRepository.save(coursesCategories(categoryDTO));
+    boolean addCourseCategory(CategoryDTO categoryDTO) {
+        if (nameAlreadyExists(categoryDTO.getName())) {
+            return false;
+        } else {
+            categoryRepository.save(category(categoryDTO));
+            return true;
+        }
     }
 
-     List<CategoryDTO> getCategory() {
+    private boolean nameAlreadyExists(String categoryName) {
+        return !categoryRepository.findCategoryByName(categoryName).isEmpty();
+    }
+
+    List<CategoryDTO> getCategory() {
         List<Category> allCategories = categoryRepository.findAll();
         List<CategoryDTO> allCategoriesDTO = new ArrayList<>();
 
@@ -25,7 +34,7 @@ class CategoryService {
         return allCategoriesDTO;
     }
 
-    private Category coursesCategories(CategoryDTO categoryDTO) {
+    private Category category(CategoryDTO categoryDTO) {
         Category category = new Category();
         category.setId(categoryDTO.getId());
         category.setName(categoryDTO.getName());
@@ -40,4 +49,4 @@ class CategoryService {
         categoryDTO.setDescription(category.getDescription());
         return categoryDTO;
     }
- }
+}
