@@ -5,16 +5,15 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class CourseService {
+class CourseService {
 
     private final CoursesRepository coursesRepository;
 
-    public CourseService(CoursesRepository coursesRepository) {
+     CourseService(CoursesRepository coursesRepository) {
         this.coursesRepository = coursesRepository;
     }
 
-    public boolean addCourse(CourseDTO courseDTO) {
+     boolean addCourse(CourseDTO courseDTO) {
         if (nameAlreadyExists(courseDTO.getName())) {
             return false;
         } else {
@@ -27,7 +26,7 @@ public class CourseService {
         return !coursesRepository.findCourseByName(courseName).isEmpty();
     }
 
-    public List<CourseDTO> getCourses() {
+    List<CourseDTO> getCourses() {
         List<Course> allCourses = coursesRepository.findAll();
         List<CourseDTO> allCoursesDTO = new ArrayList<>();
 

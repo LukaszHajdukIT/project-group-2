@@ -8,22 +8,22 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/courses")
-public class CourseController {
+class CourseController {
 
     private final CourseService courseService;
 
-    public CourseController(CourseService courseService) {
+    private CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
 
     @PostMapping
-    public ResponseEntity<Void> addCourse(@RequestBody CourseDTO courseDTO) {
+    ResponseEntity<Void> addCourse(@RequestBody CourseDTO courseDTO) {
         return courseService.addCourse(courseDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
 
     }
 
     @GetMapping
-    public List<CourseDTO> getCourses() {
+    private List<CourseDTO> getCourses() {
         return courseService.getCourses();
     }
 }

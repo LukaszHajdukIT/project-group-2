@@ -5,16 +5,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class CourseDTO {
+ class CourseDTO {
     private Long id;
     private String name;
     private String description;
     private int duration;
 
-    public CourseDTO(){
+     CourseDTO(){
     }
 
-    public CourseDTO(String name, String description, int duration) {
+     CourseDTO(String name, String description, int duration) {
         this.name = name;
         this.description = description;
         this.duration = duration;

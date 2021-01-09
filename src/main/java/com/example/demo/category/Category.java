@@ -1,4 +1,4 @@
-package com.example.demo.coursers;
+package com.example.demo.category;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,17 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-class Course {
+ class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
-    private int duration;
 
-    Course(){
+    Category() {
     }
-
 
     public Long getId() {
         return id;
@@ -42,21 +40,12 @@ class Course {
         this.description = description;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     @Override
     public String toString() {
-        return "Course{" +
+        return "CoursesCategories{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", duration=" + duration +
                 '}';
     }
 }
