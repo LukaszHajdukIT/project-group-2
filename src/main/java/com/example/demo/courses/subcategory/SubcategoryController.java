@@ -1,5 +1,7 @@
 package com.example.demo.courses.subcategory;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +23,8 @@ class SubcategoryController {
     }
 
     @PostMapping
-    void addSubcategory(@RequestBody SubcategoryDTO subcategoryDTO) {
-        subcategoryService.addSubcourseCategory(subcategoryDTO);
+    ResponseEntity<Void> addSubcategory(@RequestBody SubcategoryDTO subcategoryDTO) {
+      return subcategoryService.addCourseSubcategory(subcategoryDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
 
     @GetMapping

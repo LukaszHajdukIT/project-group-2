@@ -65,7 +65,6 @@ class SubcategoryControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-
         List<SubcategoryDTO> actual = objectMapper.readValue(result.getResponse().getContentAsString(),
                 new TypeReference<List<SubcategoryDTO>>() {
                 });
@@ -79,35 +78,34 @@ class SubcategoryControllerTest {
         return objectMapper.writeValueAsString(subcategoryDTO);
     }
 
-//    @Test
-//    public void shouldNotAddSubcategoryWithAlreadyExistingName() throws Exception {
-//        //given
-//        SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
-//        subcategoryDTO.setName("Spring");
-//        subcategoryDTO.setDescription("All that matters");
-//
-//
-//        //when
-//        String content = contentAsJson(subcategoryDTO);
-//        mockMvc.perform(
-//                post("/subcategory")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(content)
-//        )
-//                .andExpect(status().isOk()
-//                );
-//
-//        mockMvc.perform(
-//                post("/subcategory")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(content)
-//        )
-//                .andExpect(status().isConflict()
-//                );
-//
-//        List<Subcategory> subcategoryByName = subcategoryRepository.findSubcategoryByName("Spring");
-//
-//        //then
-//        assertThat(subcategoryByName.size()).isEqualTo(1);
-//    }
+    @Test
+    public void shouldNotAddSubcategoryWithAlreadyExistingName() throws Exception {
+        //given
+        SubcategoryDTO subcategoryDTO = new SubcategoryDTO();
+        subcategoryDTO.setName("Spring");
+        subcategoryDTO.setDescription("All that matters");
+
+        //when
+        String content = contentAsJson(subcategoryDTO);
+        mockMvc.perform(
+                post("/subcategory")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isOk()
+                );
+
+        mockMvc.perform(
+                post("/subcategory")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(content)
+        )
+                .andExpect(status().isConflict()
+                );
+
+        List<Subcategory> subcategoryByName = subcategoryRepository.findSubcategoryByName("Spring");
+
+        //then
+        assertThat(subcategoryByName.size()).isEqualTo(1);
+    }
 }

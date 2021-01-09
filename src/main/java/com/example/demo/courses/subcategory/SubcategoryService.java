@@ -13,17 +13,26 @@ class SubcategoryService {
         this.subcategoryRepository = subcategoryRepository;
     }
 
-    @Bean
-    void addSubcourseCategory(SubcategoryDTO subcategoryDTO) {
-        subcategoryRepository.save(courseSubcategories(subcategoryDTO));
+    boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
+        if (isNameAlreadyExists(subcategoryDTO.getName())) {
+            return false;
+        } else {
+            subcategoryRepository.save(subcategory(subcategoryDTO));
+            return true;
+        }
     }
 
-    private Subcategory courseSubcategories(SubcategoryDTO subcategoryDTO) {
-        Subcategory courseSubcategories = new Subcategory();
-        courseSubcategories.setId(subcategoryDTO.getId());
-        courseSubcategories.setName(subcategoryDTO.getName());
-        courseSubcategories.setDescription(subcategoryDTO.getDescription());
-        return courseSubcategories;
+    private boolean isNameAlreadyExists(String subcategoryName) {
+        return !subcategoryRepository.findSubcategoryByName(subcategoryName).isEmpty();
+    }
+
+
+    private Subcategory subcategory(SubcategoryDTO subcategoryDTO) {
+        Subcategory subcategory = new Subcategory();
+        subcategory.setId(subcategoryDTO.getId());
+        subcategory.setName(subcategoryDTO.getName());
+        subcategory.setDescription(subcategoryDTO.getDescription());
+        return subcategory;
     }
 
     private SubcategoryDTO subcategoryDTO(Subcategory subcategory) {
