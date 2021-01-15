@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class TrainerControllerTest {
+class TrainerControllerIT {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
@@ -40,20 +40,11 @@ class TrainerControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void shouldShowTrainers() {
-        //when
-        trainerController.addTrainer(new TrainerDTO("Michał", "Witek", (long) 838383));
-        //then
-        assertEquals(1, trainersRepository.count());
-        assertNotNull(trainersRepository);
-    }
-
-    @Test
     public void shouldShowAddedTrainers() throws Exception {
         TrainerDTO trainerDTO = new TrainerDTO();
         trainerDTO.setFirstName("Ania");
         trainerDTO.setLastName("Niemiec");
-        trainerDTO.setPesel(567890L);
+        trainerDTO.setPesel(56789034231L);
 
         String content = contentAsJson(trainerDTO);
 
@@ -76,7 +67,7 @@ class TrainerControllerTest {
 
         assertEquals(actual.get(0).getFirstName(), "Ania");
         assertEquals(actual.get(0).getLastName(), "Niemiec");
-        assertEquals(actual.get(0).getPesel(), 567890L);
+        assertEquals(actual.get(0).getPesel(), 56789034231L);
     }
 
     private String contentAsJson(TrainerDTO trainerDTO) throws JsonProcessingException {
