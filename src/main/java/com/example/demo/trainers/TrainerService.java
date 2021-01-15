@@ -12,16 +12,18 @@ class TrainerService {
     }
 
     boolean addTrainer(TrainerDTO trainerDTO) {
+
         if (trainerAlreadyExists(trainerDTO.getPesel())) {
             return false;
-        } else {
+        } else if (trainerDTO.getPesel().toString().length() == 11) {
             trainersRepository.save(trainer(trainerDTO));
             return true;
         }
+        return false;
     }
 
-    private boolean trainerAlreadyExists(Long trainerName) {
-        return !trainersRepository.findTrainerByPesel(trainerName).isEmpty();
+    private boolean trainerAlreadyExists(Long trainerPesel) {
+        return !trainersRepository.findTrainerByPesel(trainerPesel).isEmpty();
     }
 
     List<TrainerDTO> getTrainers() {
