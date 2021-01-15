@@ -15,11 +15,15 @@ class TrainerService {
 
         if (trainerAlreadyExists(trainerDTO.getPesel())) {
             return false;
-        } else if (trainerDTO.getPesel().toString().length() == 11) {
+        } else if (peselLengthIsEqualToEleven(trainerDTO)) {
             trainersRepository.save(trainer(trainerDTO));
             return true;
         }
         return false;
+    }
+
+    private boolean peselLengthIsEqualToEleven(TrainerDTO trainerDTO) {
+        return trainerDTO.getPesel().toString().length() == 11;
     }
 
     private boolean trainerAlreadyExists(Long trainerPesel) {

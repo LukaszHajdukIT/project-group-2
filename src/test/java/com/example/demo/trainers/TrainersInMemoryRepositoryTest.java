@@ -6,14 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TrainersInMemoryRepositoryTest {
 
-    TrainersRepository trainersRepository;
-
-    TrainerService trainerService;
+    TrainerService trainerService = new TrainerService((new TrainersInMemoryRepository()));
 
     @Test
     public void shouldAddTrainer(){
-        //given
-        trainerService = new TrainerService(new TrainersInMemoryRepository());
         //when
         boolean result = trainerService.addTrainer(new TrainerDTO("Andrzej", "Andrzejewski", 93846738212L));
         //then
@@ -23,7 +19,6 @@ class TrainersInMemoryRepositoryTest {
     @Test
     public void shouldNotAddTrainerWithAlreadyPeselExists(){
         //given
-        trainerService = new TrainerService(new TrainersInMemoryRepository());
         trainerService.addTrainer(new TrainerDTO("aaa", "aaa",93846738212L));
         //when
         boolean result = trainerService.addTrainer(new TrainerDTO("Andrzej", "Andrzejewski", 93846738212L));
@@ -33,8 +28,6 @@ class TrainersInMemoryRepositoryTest {
 
     @Test
     public void shouldNotAddTrainerWithToShortPesel(){
-        //given
-        trainerService = new TrainerService(new TrainersInMemoryRepository());
         //when
         boolean result = trainerService.addTrainer(new TrainerDTO("aaa", "aaa", 98475L));
         //then
@@ -43,8 +36,6 @@ class TrainersInMemoryRepositoryTest {
 
     @Test
     public void shouldNotAddTrainerWithToLongPesel(){
-        //given
-        trainerService = new TrainerService(new TrainersInMemoryRepository());
         //when
         boolean result = trainerService.addTrainer(new TrainerDTO("aaa", "aaa", 984753453456658768L));
         //then

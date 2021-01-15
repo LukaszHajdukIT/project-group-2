@@ -9,9 +9,9 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public class TrainersInMemoryRepository implements TrainersRepository {
+class TrainersInMemoryRepository implements TrainersRepository {
 
-    Map<Long, Trainer> trainers = new ConcurrentHashMap<>();
+   private final Map<Long, Trainer> trainers = new ConcurrentHashMap<>();
 
     @Override
     public List<Trainer> findTrainerByPesel(Long pesel) {
