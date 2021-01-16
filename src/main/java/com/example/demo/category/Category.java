@@ -13,7 +13,12 @@ import javax.persistence.Id;
     private String name;
     private String description;
 
-    Category() {
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Category() {
     }
 
     public Long getId() {

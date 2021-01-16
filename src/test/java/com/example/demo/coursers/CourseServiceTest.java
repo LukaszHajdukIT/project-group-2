@@ -1,5 +1,7 @@
 package com.example.demo.coursers;
 
+import com.example.demo.category.Category;
+import com.example.demo.category.CategoryRepository;
 import com.example.demo.courses.subcategory.Subcategory;
 import com.example.demo.courses.subcategory.SubcategoryRepository;
 import com.example.demo.courses.subcategory.SubcategoryService;
@@ -31,10 +33,19 @@ class CourseServiceTest {
     @Autowired
     SubcategoryRepository subcategoryRepository;
 
+    @Autowired
+    CategoryRepository categoryRepository;
+
     @BeforeEach
+
     public void init(){
-        Subcategory java = new Subcategory("Java", "description");
-        Subcategory javaScript = new Subcategory("JavaScript", "description");
+        Category it = new Category("nameIT", "descriptionIT");
+        Category it2 = new Category("nameIT2", "descriptionIT2");
+        categoryRepository.save(it);
+        categoryRepository.save(it2);
+
+        Subcategory java = new Subcategory("Java", "description", it);
+        Subcategory javaScript = new Subcategory("JavaScript", "description", it);
         subcategoryRepository.save(java);
         subcategoryRepository.save(javaScript);
 
