@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import javax.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -103,9 +104,9 @@ class CategoryControllerTest {
                 .andExpect(status().isConflict()
                 );
 
-        List<Category> categoryByName = categoryRepository.findCategoryByName("IT");
+        Optional<Category> categoryByName = categoryRepository.findCategoryByName("IT");
 
 //        then
-        assertThat(categoryByName.size()).isEqualTo(1);
+        assertThat(categoryByName.isPresent()).isTrue();
     }
 }

@@ -2,12 +2,7 @@ package com.example.demo.courses.subcategory;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,8 +22,8 @@ class SubcategoryController {
       return subcategoryService.addCourseSubcategory(subcategoryDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
 
-    @GetMapping
-    private List<SubcategoryDTO> getSubcategory(){
-        return subcategoryService.getSubcategory();
+    @GetMapping("/{paramCategoryId}")
+    private List<SubcategoryDTO> getSubcategory(@PathVariable("paramCategoryId") Long categoryId){
+        return subcategoryService.getSubcategory(categoryId);
     }
 }

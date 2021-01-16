@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.category.Category;
+import com.example.demo.category.CategoryRepository;
 import com.example.demo.coursers.Course;
 import com.example.demo.coursers.CoursesRepository;
 import com.example.demo.courses.subcategory.Subcategory;
@@ -18,14 +20,22 @@ public class ProjectGroup2Application implements CommandLineRunner {
 	@Autowired
 	private CoursesRepository coursesRepository;
 
+	@Autowired
+	CategoryRepository categoryRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectGroup2Application.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		Subcategory java = new Subcategory("Java", "description");
-		Subcategory javaScript = new Subcategory("JavaScript", "description");
+		Category it = new Category("nameIT", "descriptionIT");
+		Category it2 = new Category("nameIT2", "descriptionIT2");
+		categoryRepository.save(it);
+		categoryRepository.save(it2);
+
+		Subcategory java = new Subcategory("Java", "description", it);
+		Subcategory javaScript = new Subcategory("JavaScript", "description", it2);
 		subcategoryRepository.save(java);
 		subcategoryRepository.save(javaScript);
 
