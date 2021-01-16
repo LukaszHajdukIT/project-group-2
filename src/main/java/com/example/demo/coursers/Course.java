@@ -5,7 +5,7 @@ import com.example.demo.courses.subcategory.Subcategory;
 import javax.persistence.*;
 
 @Entity
-class Course {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

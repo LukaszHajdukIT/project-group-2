@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
- interface CoursesRepository extends JpaRepository<Course, Long> {
+public interface CoursesRepository extends JpaRepository<Course, Long> {
     List<Course> findCourseByName(String name);
 
     @Query("select c from Course c where c.subcategory = :subcategory")
