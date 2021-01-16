@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -103,9 +104,9 @@ class SubcategoryControllerTest {
                 .andExpect(status().isConflict()
                 );
 
-        List<Subcategory> subcategoryByName = subcategoryRepository.findSubcategoryByName("Spring");
+        Optional<Subcategory> subcategoryByName = subcategoryRepository.findSubcategoryByName("Spring");
 
         //then
-        assertThat(subcategoryByName.size()).isEqualTo(1);
+        assertThat(subcategoryByName.isPresent()).isTrue();
     }
 }

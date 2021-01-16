@@ -1,20 +1,22 @@
 package com.example.demo.coursers;
 
+import com.example.demo.courses.subcategory.Subcategory;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
- class CourseDTO {
+class CourseDTO {
     private Long id;
     private String name;
     private String description;
     private int duration;
 
-     CourseDTO(){
+    CourseDTO() {
     }
 
-     CourseDTO(String name, String description, int duration) {
+    CourseDTO(String name, String description, int duration) {
         this.name = name;
         this.description = description;
         this.duration = duration;

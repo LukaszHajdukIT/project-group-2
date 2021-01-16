@@ -1,12 +1,12 @@
 package com.example.demo.courses.subcategory;
 
-class SubcategoryDTO {
+public class SubcategoryDTO {
 
         private Long id;
         private String name;
         private String description;
 
-        SubcategoryDTO(String name, String description) {
+        public SubcategoryDTO(String name, String description) {
             this.name = name;
             this.description = description;
         }
