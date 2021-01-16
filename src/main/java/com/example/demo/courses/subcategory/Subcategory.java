@@ -1,9 +1,8 @@
 package com.example.demo.courses.subcategory;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.demo.category.Category;
+
+import javax.persistence.*;
 
 @Entity
 public class Subcategory {
@@ -12,13 +11,16 @@ public class Subcategory {
     private Long id;
     private String name;
     private String description;
+    @ManyToOne
+    private Category category;
 
     Subcategory() {
     }
 
-    public Subcategory(String name, String description) {
+    public Subcategory(String name, String description, Category category) {
         this.name = name;
         this.description = description;
+        this.category = category;
     }
 
     public Long getId() {
@@ -43,6 +45,14 @@ public class Subcategory {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override
