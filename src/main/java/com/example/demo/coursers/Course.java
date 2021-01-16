@@ -1,22 +1,37 @@
 package com.example.demo.coursers;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.demo.courses.subcategory.Subcategory;
+
+import javax.persistence.*;
 
 @Entity
-class Course {
+public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
     private int duration;
+    @ManyToOne
+    private Subcategory subcategory;
 
     Course(){
     }
 
+    public Course(String name, String description, int duration, Subcategory subcategory) {
+        this.name = name;
+        this.description = description;
+        this.duration = duration;
+        this.subcategory = subcategory;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
+    }
 
     public Long getId() {
         return id;

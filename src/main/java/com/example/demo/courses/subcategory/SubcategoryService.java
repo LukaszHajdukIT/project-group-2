@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.ArrayList;
 import java.util.List;
 
-class SubcategoryService {
+public class SubcategoryService {
 
     private final SubcategoryRepository subcategoryRepository;
 
@@ -13,7 +13,7 @@ class SubcategoryService {
         this.subcategoryRepository = subcategoryRepository;
     }
 
-    boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
+    public boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
         if (isNameAlreadyExists(subcategoryDTO.getName())) {
             return false;
         } else {

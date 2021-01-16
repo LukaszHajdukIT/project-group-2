@@ -1,16 +1,21 @@
 package com.example.demo.coursers;
 
-import org.springframework.stereotype.Component;
+import com.example.demo.courses.subcategory.Subcategory;
+import com.example.demo.courses.subcategory.SubcategoryRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 class CourseService {
 
     private final CoursesRepository coursesRepository;
 
-     CourseService(CoursesRepository coursesRepository) {
+    private SubcategoryRepository subcategoryRepository;
+
+     CourseService(CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository) {
         this.coursesRepository = coursesRepository;
+        this.subcategoryRepository = subcategoryRepository;
     }
 
      boolean addCourse(CourseDTO courseDTO) {
@@ -26,8 +31,9 @@ class CourseService {
         return !coursesRepository.findCourseByName(courseName).isEmpty();
     }
 
-    List<CourseDTO> getCourses() {
-        List<Course> allCourses = coursesRepository.findAll();
+    List<CourseDTO> getCourses(Long subcategoryId) {
+         Optional<Subcategory> id = subcategoryRepository.findById(subcategoryId);
+        List<Course> allCourses = coursesRepository.findAllBySubcategory(id.get());
         List<CourseDTO> allCoursesDTO = new ArrayList<>();
 
         for (Course course : allCourses) {
@@ -54,4 +60,5 @@ class CourseService {
         courseDTO.setDuration(course.getDuration());
         return courseDTO;
     }
+
 }
