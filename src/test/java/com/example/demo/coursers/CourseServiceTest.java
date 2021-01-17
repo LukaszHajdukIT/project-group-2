@@ -65,7 +65,7 @@ class CourseServiceTest {
     public void shouldReturnCoursesOnlyWithGivenSubcategory(){
         //when
         Optional<Subcategory> java = subcategoryRepository.findSubcategoryByName("Java");
-        List<CourseDTO> result = courseService.getCourses(java.get().getId());
+        List<CourseDTO> result = courseService.getCoursesBySubcategory(java.get().getId());
         //then
         assertThat(result.size()).isEqualTo(3);
     }

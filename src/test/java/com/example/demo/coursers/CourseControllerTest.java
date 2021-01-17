@@ -45,7 +45,7 @@ class CourseControllerTest {
         //when
         courseController.addCourse(new CourseDTO("Java", "Basics", 8));
         //then
-        assertEquals(6, coursesRepository.count());
+        assertEquals(1, coursesRepository.count());
         assertNotNull(coursesRepository);
     }
 

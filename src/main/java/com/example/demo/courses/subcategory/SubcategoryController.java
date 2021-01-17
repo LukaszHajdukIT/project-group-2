@@ -1,5 +1,6 @@
 package com.example.demo.courses.subcategory;
 
+import com.example.demo.coursers.CourseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,13 @@ class SubcategoryController {
       return subcategoryService.addCourseSubcategory(subcategoryDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
 
+    @GetMapping
+    private List<SubcategoryDTO> getSubcategory(){
+        return subcategoryService.getSubcategory();
+    }
+
     @GetMapping("/{paramCategoryId}")
-    private List<SubcategoryDTO> getSubcategory(@PathVariable("paramCategoryId") Long categoryId){
+    private List<SubcategoryDTO> getSubcategoryByCategory(@PathVariable("paramCategoryId") Long categoryId){
         return subcategoryService.getSubcategory(categoryId);
     }
 }

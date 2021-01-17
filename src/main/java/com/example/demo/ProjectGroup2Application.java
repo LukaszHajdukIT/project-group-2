@@ -29,8 +29,8 @@ public class ProjectGroup2Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Category it = new Category("nameIT", "descriptionIT");
-		Category it2 = new Category("nameIT2", "descriptionIT2");
+		Category it = new Category("IT", "description");
+		Category it2 = new Category("Sales", "Sales description");
 		categoryRepository.save(it);
 		categoryRepository.save(it2);
 

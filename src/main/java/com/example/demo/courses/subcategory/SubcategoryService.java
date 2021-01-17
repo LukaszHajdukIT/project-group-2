@@ -2,10 +2,13 @@ package com.example.demo.courses.subcategory;
 
 import com.example.demo.category.Category;
 import com.example.demo.category.CategoryRepository;
+import com.example.demo.coursers.Course;
+import com.example.demo.coursers.CourseDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class SubcategoryService {
 
@@ -46,6 +49,14 @@ public class SubcategoryService {
         subcategoryDTO.setDescription(subcategory.getDescription());
         return subcategoryDTO;
     }
+
+    public List<SubcategoryDTO> getSubcategory() {
+        List<Subcategory> all = subcategoryRepository.findAll();
+        return all.stream()
+                .map(this::subcategoryDTO)
+                .collect(Collectors.toList());
+    }
+
 
     List<SubcategoryDTO> getSubcategory(Long categoryId) {
         Optional<Category> id = categoryRepository.findById(categoryId);

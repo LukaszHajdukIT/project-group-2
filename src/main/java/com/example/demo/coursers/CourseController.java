@@ -22,8 +22,13 @@ class CourseController {
         return courseService.addCourse(courseDTO) ? new ResponseEntity<Void>(HttpStatus.OK) : new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
 
-    @GetMapping("/{paramSubcategoryId}")
-    private List<CourseDTO> getCourses(@PathVariable("paramSubcategoryId") Long subcategoryId) {
-        return courseService.getCourses(subcategoryId);
+    @GetMapping
+    private List<CourseDTO> getCourses(){
+        return courseService.getCourses();
+    }
+
+    @GetMapping("/{subcategoryId}")
+    private List<CourseDTO> getCoursesBySubcategory(@PathVariable Long subcategoryId) {
+        return courseService.getCoursesBySubcategory(subcategoryId);
     }
 }
