@@ -28,7 +28,7 @@ class CourseController {
     }
 
     @GetMapping("/{subcategoryId}")
-    private List<CourseDTO> getCoursesBySubcategory(@PathVariable Long subcategoryId) {
+    private List<CourseDTO> getCoursesBySubcategory(@PathVariable("subcategoryId") Long subcategoryId) {
         return courseService.getCoursesBySubcategory(subcategoryId);
     }
 }
