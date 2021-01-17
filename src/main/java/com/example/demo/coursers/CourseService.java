@@ -6,6 +6,7 @@ import com.example.demo.courses.subcategory.SubcategoryRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 class CourseService {
 
@@ -31,7 +32,14 @@ class CourseService {
         return !coursesRepository.findCourseByName(courseName).isEmpty();
     }
 
-    List<CourseDTO> getCourses(Long subcategoryId) {
+    public List<CourseDTO> getCourses() {
+        List<Course> all = coursesRepository.findAll();
+        return all.stream()
+                .map(this::courseDTO)
+                .collect(Collectors.toList());
+    }
+
+    List<CourseDTO> getCoursesBySubcategory(Long subcategoryId) {
          Optional<Subcategory> id = subcategoryRepository.findById(subcategoryId);
         List<Course> allCourses = coursesRepository.findAllBySubcategory(id.get());
         List<CourseDTO> allCoursesDTO = new ArrayList<>();

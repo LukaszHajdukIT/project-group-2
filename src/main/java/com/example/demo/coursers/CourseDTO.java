@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-class CourseDTO {
+public class CourseDTO {
     private Long id;
     private String name;
     private String description;
