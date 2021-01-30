@@ -17,7 +17,6 @@ class MailServiceTest {
 
     MailService mailService = new MailService(coursesRepositoryInMemory, mailSender);
 
-
     @Test
     public void shouldPrepareMailWithCorrectData() {
         //given

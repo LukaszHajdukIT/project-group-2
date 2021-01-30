@@ -4,7 +4,7 @@ import com.example.demo.coursers.MailService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins="*",allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController()
 class MailController {
     private final MailService mailService;
@@ -12,5 +12,4 @@ class MailController {
     private MailController(MailService mailService) {
         this.mailService = mailService;
     }
-
 }
