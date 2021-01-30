@@ -98,7 +98,7 @@ class TrainerControllerIT {
         )
                 .andExpect(status().isConflict());
 
-        List<Trainer> trainerByName = trainersRepository.findTrainerByPesel(8403240011L);
+        List<Trainer> trainerByName = trainersRepository.findTrainerByPesel(84032400110L);
 
         //then
         assertThat(trainerByName.size()).isEqualTo(1);
