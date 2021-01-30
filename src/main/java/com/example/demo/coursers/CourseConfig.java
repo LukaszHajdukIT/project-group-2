@@ -1,6 +1,7 @@
 package com.example.demo.coursers;
 
 import com.example.demo.courses.subcategory.SubcategoryRepository;
+import com.example.demo.mail.MailSender;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
     }
 
     @Bean
-    MailService mailService (CoursesRepository coursesRepository) {
-        return new MailService(coursesRepository);
+    MailService mailService (CoursesRepository coursesRepository, MailSender mailSender) {
+        return new MailService(coursesRepository, mailSender);
     }
 }
