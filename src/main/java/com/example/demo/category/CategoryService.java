@@ -1,9 +1,11 @@
 package com.example.demo.category;
 
+import com.example.demo.models.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class CategoryService {
+ class CategoryService {
     private final CategoryRepository categoryRepository;
 
     CategoryService(CategoryRepository categoryRepository) {

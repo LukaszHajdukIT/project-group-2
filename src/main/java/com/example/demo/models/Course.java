@@ -1,26 +1,34 @@
-package com.example.demo.courses.subcategory;
-
-import com.example.demo.category.Category;
+package com.example.demo.models;
 
 import javax.persistence.*;
 
 @Entity
-public class Subcategory {
+ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
+    private int duration;
     @ManyToOne
-    private Category category;
+    private Subcategory subcategory;
 
-    Subcategory() {
+    public Course(){
     }
 
-    public Subcategory(String name, String description, Category category) {
+    public Course(String name, String description, int duration, Subcategory subcategory) {
         this.name = name;
         this.description = description;
-        this.category = category;
+        this.duration = duration;
+        this.subcategory = subcategory;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 
     public Long getId() {
@@ -47,20 +55,21 @@ public class Subcategory {
         this.description = description;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     @Override
     public String toString() {
-        return "Subcategory{" +
+        return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", duration=" + duration +
                 '}';
     }
 }

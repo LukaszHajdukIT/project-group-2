@@ -1,11 +1,10 @@
-package com.example.demo.courses.subcategory;
+package com.example.demo.category;
 
-import com.example.demo.category.CategoryRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class SubcategoryConfig {
+ class SubcategoryConfig {
 
     @Bean()
     SubcategoryService subcategoryService(SubcategoryRepository subcategoryRepository, CategoryRepository categoryRepository) {

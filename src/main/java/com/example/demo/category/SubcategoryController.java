@@ -1,6 +1,5 @@
-package com.example.demo.courses.subcategory;
+package com.example.demo.category;
 
-import com.example.demo.coursers.CourseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

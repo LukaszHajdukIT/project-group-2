@@ -1,6 +1,4 @@
-package com.example.demo.coursers;
-
-import com.example.demo.mail.MailSender;
+package com.example.demo.mail;
 
 public class TestMailSender implements MailSender {
     private String address;
@@ -38,4 +36,3 @@ public class TestMailSender implements MailSender {
         this.content = content;
     }
 }
-

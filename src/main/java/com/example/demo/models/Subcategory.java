@@ -1,24 +1,24 @@
-package com.example.demo.category;
+package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
- public class Category {
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String description;
+    @ManyToOne
+    private Category category;
 
-    public Category(String name, String description) {
-        this.name = name;
-        this.description = description;
+    public Subcategory() {
     }
 
-    public Category() {
+    public Subcategory(String name, String description, Category category) {
+        this.name = name;
+        this.description = description;
+        this.category = category;
     }
 
     public Long getId() {
@@ -45,9 +45,17 @@ import javax.persistence.Id;
         this.description = description;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return "Category{" +
+        return "Subcategory{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

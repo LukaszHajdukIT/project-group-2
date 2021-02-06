@@ -1,14 +1,14 @@
-package com.example.demo.coursers;
+package com.example.demo.category;
 
-import com.example.demo.courses.subcategory.Subcategory;
-import com.example.demo.courses.subcategory.SubcategoryRepository;
+import com.example.demo.models.Course;
+import com.example.demo.models.Subcategory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-class CourseService {
+ class CourseService {
 
     private final CoursesRepository coursesRepository;
 
@@ -32,7 +32,7 @@ class CourseService {
         return !coursesRepository.findCourseByName(courseName).isEmpty();
     }
 
-    public List<CourseDTO> getCourses() {
+     List<CourseDTO> getCourses() {
         List<Course> all = coursesRepository.findAll();
         return all.stream()
                 .map(this::courseDTO)

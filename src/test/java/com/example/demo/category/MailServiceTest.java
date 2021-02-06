@@ -1,8 +1,10 @@
-package com.example.demo.coursers;
+package com.example.demo.category;
 
-import com.example.demo.category.Category;
-import com.example.demo.courses.subcategory.Subcategory;
-import com.example.demo.mail.MailSender;
+import com.example.demo.models.Category;
+import com.example.demo.models.Course;
+import com.example.demo.mail.MailService;
+import com.example.demo.mail.TestMailSender;
+import com.example.demo.models.Subcategory;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,7 +17,9 @@ class MailServiceTest {
 
     private CoursesRepositoryInMemory coursesRepositoryInMemory = new CoursesRepositoryInMemory();
 
-    MailService mailService = new MailService(coursesRepositoryInMemory, mailSender);
+    private CourseFacade courseFacade = new InMemoryCourseFacade(coursesRepositoryInMemory);
+
+    MailService mailService = new MailService(courseFacade, mailSender);
 
     @Test
     public void shouldPrepareMailWithCorrectData() {
@@ -25,7 +29,6 @@ class MailServiceTest {
         ids.add(1L);
         ids.add(2L);
 
-        // TODO dodać 3 kursy
         Category it = new Category("nameIT", "descriptionIT");
         Subcategory java = new Subcategory("Java", "description", it);
         Course java2 = new Course("Java2", "Java2 description", 8, java);

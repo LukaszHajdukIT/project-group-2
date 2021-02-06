@@ -1,16 +1,14 @@
-package com.example.demo.courses.subcategory;
+package com.example.demo.category;
 
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryRepository;
-import com.example.demo.coursers.Course;
-import com.example.demo.coursers.CourseDTO;
+import com.example.demo.models.Category;
+import com.example.demo.models.Subcategory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class SubcategoryService {
+ class SubcategoryService {
 
     private final SubcategoryRepository subcategoryRepository;
     private CategoryRepository categoryRepository;
@@ -20,7 +18,7 @@ public class SubcategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
+     boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
         if (isNameAlreadyExists(subcategoryDTO.getName())) {
             return false;
         } else {
@@ -50,7 +48,7 @@ public class SubcategoryService {
         return subcategoryDTO;
     }
 
-    public List<SubcategoryDTO> getSubcategory() {
+     List<SubcategoryDTO> getSubcategory() {
         List<Subcategory> all = subcategoryRepository.findAll();
         return all.stream()
                 .map(this::subcategoryDTO)

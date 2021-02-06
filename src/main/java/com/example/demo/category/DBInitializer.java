@@ -1,28 +1,23 @@
-package com.example.demo;
+package com.example.demo.category;
 
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryRepository;
-import com.example.demo.coursers.Course;
-import com.example.demo.coursers.CoursesRepository;
-import com.example.demo.courses.subcategory.Subcategory;
-import com.example.demo.courses.subcategory.SubcategoryRepository;
+import com.example.demo.models.Category;
+import com.example.demo.models.Course;
+import com.example.demo.models.Subcategory;
 import com.example.demo.trainers.TrainersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 @Profile("prod")
-public class DBInitializer implements CommandLineRunner {
+ class DBInitializer implements CommandLineRunner {
 
     private CategoryRepository categoryRepository;
     private CoursesRepository coursesRepository;
     private SubcategoryRepository subcategoryRepository;
     private TrainersRepository trainersRepository;
 
-    public DBInitializer(CategoryRepository categoryRepository, CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository, TrainersRepository trainersRepository) {
+     DBInitializer(CategoryRepository categoryRepository, CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository, TrainersRepository trainersRepository) {
         this.categoryRepository = categoryRepository;
         this.coursesRepository = coursesRepository;
         this.subcategoryRepository = subcategoryRepository;

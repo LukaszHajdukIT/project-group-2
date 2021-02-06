@@ -1,15 +1,15 @@
-package com.example.demo.coursers;
+package com.example.demo.mail;
 
 import java.util.List;
 
-public class MailDTO {
+ class MailDTO {
     private String address;
     private List<Long> ids;
 
-    public MailDTO() {
+     MailDTO() {
     }
 
-    public MailDTO(String address, List<Long> ids) {
+     MailDTO(String address, List<Long> ids) {
         this.address = address;
         this.ids = ids;
     }
