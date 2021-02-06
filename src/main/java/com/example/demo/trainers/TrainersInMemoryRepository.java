@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-class TrainersInMemoryRepository implements TrainersRepository {
+public class TrainersInMemoryRepository implements TrainersRepository {
 
    private final Map<Long, Trainer> trainers = new ConcurrentHashMap<>();
 
