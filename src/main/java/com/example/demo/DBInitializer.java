@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Profile("prod")
 public class DBInitializer implements CommandLineRunner {
@@ -64,5 +66,7 @@ public class DBInitializer implements CommandLineRunner {
         coursesRepository.save(react);
         coursesRepository.save(redux);
         coursesRepository.save(basicsDotNet);
+
+        coursesRepository.findAll().forEach(System.out::println);
     }
 }
