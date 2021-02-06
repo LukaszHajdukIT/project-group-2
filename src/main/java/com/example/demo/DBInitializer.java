@@ -2,16 +2,14 @@ package com.example.demo;
 
 import com.example.demo.category.Category;
 import com.example.demo.category.CategoryRepository;
-import com.example.demo.coursers.Course;
-import com.example.demo.coursers.CoursesRepository;
-import com.example.demo.courses.subcategory.Subcategory;
-import com.example.demo.courses.subcategory.SubcategoryRepository;
+import com.example.demo.category.Course;
+import com.example.demo.category.CoursesRepository;
+import com.example.demo.category.Subcategory;
+import com.example.demo.category.SubcategoryRepository;
 import com.example.demo.trainers.TrainersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 @Profile("prod")

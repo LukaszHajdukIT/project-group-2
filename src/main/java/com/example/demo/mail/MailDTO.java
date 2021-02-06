@@ -1,4 +1,4 @@
-package com.example.demo.coursers;
+package com.example.demo.mail;
 
 import java.util.List;
 

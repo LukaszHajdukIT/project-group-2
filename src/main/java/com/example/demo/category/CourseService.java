@@ -1,14 +1,11 @@
-package com.example.demo.coursers;
-
-import com.example.demo.courses.subcategory.Subcategory;
-import com.example.demo.courses.subcategory.SubcategoryRepository;
+package com.example.demo.category;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-class CourseService {
+public class CourseService {
 
     private final CoursesRepository coursesRepository;
 

@@ -1,11 +1,4 @@
-package com.example.demo.coursers;
-
-import com.example.demo.courses.subcategory.Subcategory;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package com.example.demo.category;
 
 public class CourseDTO {
     private Long id;

@@ -1,16 +1,16 @@
-package com.example.demo.coursers;
+package com.example.demo.mail;
 
-import com.example.demo.mail.MailSender;
+import com.example.demo.category.CoursesRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-class MailService {
+public class MailService {
     private final CoursesRepository coursesRepository;
 
     private final MailSender mailSender;
 
-    MailService(CoursesRepository coursesRepository, MailSender mailSender) {
+   public MailService(CoursesRepository coursesRepository, MailSender mailSender) {
         this.coursesRepository = coursesRepository;
         this.mailSender = mailSender;
     }

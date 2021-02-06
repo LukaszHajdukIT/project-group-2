@@ -1,8 +1,11 @@
-package com.example.demo.coursers;
+package com.example.demo.category;
 
 import com.example.demo.category.Category;
-import com.example.demo.courses.subcategory.Subcategory;
-import com.example.demo.mail.MailSender;
+import com.example.demo.category.Course;
+import com.example.demo.category.CoursesRepositoryInMemory;
+import com.example.demo.category.Subcategory;
+import com.example.demo.mail.MailService;
+import com.example.demo.mail.TestMailSender;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

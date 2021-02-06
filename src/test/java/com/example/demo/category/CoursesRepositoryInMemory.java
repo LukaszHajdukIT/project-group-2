@@ -1,6 +1,4 @@
-package com.example.demo.coursers;
-
-import com.example.demo.courses.subcategory.Subcategory;
+package com.example.demo.category;
 
 import java.util.ArrayList;
 import java.util.List;

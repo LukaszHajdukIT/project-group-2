@@ -1,5 +1,9 @@
-package com.example.demo.courses.subcategory;
+package com.example.demo.category;
 
+import com.example.demo.category.Subcategory;
+import com.example.demo.category.SubcategoryController;
+import com.example.demo.category.SubcategoryDTO;
+import com.example.demo.category.SubcategoryRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,12 +1,12 @@
-package com.example.demo.coursers;
+package com.example.demo.category;
 
-import com.example.demo.courses.subcategory.SubcategoryRepository;
 import com.example.demo.mail.MailSender;
+import com.example.demo.mail.MailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
- class CourseConfig {
+ public class CourseConfig {
     @Bean
     CourseService courseService(CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository){
         return new CourseService(coursesRepository, subcategoryRepository);

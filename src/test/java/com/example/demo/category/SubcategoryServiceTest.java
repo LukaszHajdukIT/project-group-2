@@ -1,7 +1,6 @@
-package com.example.demo.courses.subcategory;
+package com.example.demo.category;
 
-import com.example.demo.category.Category;
-import com.example.demo.category.CategoryRepository;
+import com.example.demo.category.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

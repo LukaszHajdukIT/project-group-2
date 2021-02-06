@@ -1,9 +1,13 @@
 package com.example.demo.category;
 
+import com.example.demo.category.Category;
+import com.example.demo.category.CategoryDTO;
+import com.example.demo.category.CategoryRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class CategoryService {
+public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     CategoryService(CategoryRepository categoryRepository) {

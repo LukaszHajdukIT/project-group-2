@@ -1,4 +1,4 @@
-package com.example.demo.coursers;
+package com.example.demo.category;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
