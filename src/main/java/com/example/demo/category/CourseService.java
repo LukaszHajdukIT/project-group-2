@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class CourseService {
+ class CourseService {
 
     private final CoursesRepository coursesRepository;
 

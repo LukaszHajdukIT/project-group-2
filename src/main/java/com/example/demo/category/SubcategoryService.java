@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class SubcategoryService {
+ class SubcategoryService {
 
     private final SubcategoryRepository subcategoryRepository;
     private CategoryRepository categoryRepository;
@@ -15,7 +15,7 @@ public class SubcategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
+     boolean addCourseSubcategory(SubcategoryDTO subcategoryDTO) {
         if (isNameAlreadyExists(subcategoryDTO.getName())) {
             return false;
         } else {
@@ -45,7 +45,7 @@ public class SubcategoryService {
         return subcategoryDTO;
     }
 
-    public List<SubcategoryDTO> getSubcategory() {
+     List<SubcategoryDTO> getSubcategory() {
         List<Subcategory> all = subcategoryRepository.findAll();
         return all.stream()
                 .map(this::subcategoryDTO)

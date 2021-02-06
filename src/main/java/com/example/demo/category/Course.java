@@ -3,7 +3,7 @@ package com.example.demo.category;
 import javax.persistence.*;
 
 @Entity
-public class Course {
+ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -16,7 +16,7 @@ public class Course {
     Course(){
     }
 
-    public Course(String name, String description, int duration, Subcategory subcategory) {
+     Course(String name, String description, int duration, Subcategory subcategory) {
         this.name = name;
         this.description = description;
         this.duration = duration;

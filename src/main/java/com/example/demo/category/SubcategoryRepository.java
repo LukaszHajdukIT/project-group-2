@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface SubcategoryRepository extends JpaRepository<Subcategory, Long> {
+ interface SubcategoryRepository extends JpaRepository<Subcategory, Long> {
     Optional<Subcategory> findSubcategoryByName(String name);
 
     @Query("select s from Subcategory s where s.category = :category")

@@ -1,6 +1,6 @@
 package com.example.demo.category;
 
-public class CourseDTO {
+ class CourseDTO {
     private Long id;
     private String name;
     private String description;

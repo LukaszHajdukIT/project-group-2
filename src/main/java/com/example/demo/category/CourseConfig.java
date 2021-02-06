@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
- public class CourseConfig {
+  class CourseConfig {
     @Bean
     CourseService courseService(CoursesRepository coursesRepository, SubcategoryRepository subcategoryRepository){
         return new CourseService(coursesRepository, subcategoryRepository);
