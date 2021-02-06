@@ -1,5 +1,8 @@
 package com.example.demo.category;
 
+import com.example.demo.models.Category;
+import com.example.demo.models.Course;
+import com.example.demo.models.Subcategory;
 import com.example.demo.trainers.TrainersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;

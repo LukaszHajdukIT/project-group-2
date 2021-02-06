@@ -1,5 +1,8 @@
 package com.example.demo.category;
 
+import com.example.demo.models.Course;
+import com.example.demo.models.Subcategory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +32,7 @@ import java.util.stream.Collectors;
         return !coursesRepository.findCourseByName(courseName).isEmpty();
     }
 
-    public List<CourseDTO> getCourses() {
+     List<CourseDTO> getCourses() {
         List<Course> all = coursesRepository.findAll();
         return all.stream()
                 .map(this::courseDTO)

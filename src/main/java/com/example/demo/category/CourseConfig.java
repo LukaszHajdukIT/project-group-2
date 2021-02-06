@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
     }
 
     @Bean
-    MailService mailService (CoursesRepository coursesRepository, MailSender mailSender) {
-        return new MailService(coursesRepository, mailSender);
+    MailService mailService (DefaultCourseFacade courseFacade, MailSender mailSender) {
+        return new MailService(courseFacade, mailSender);
     }
 }

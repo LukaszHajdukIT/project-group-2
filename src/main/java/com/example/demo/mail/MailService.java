@@ -1,23 +1,24 @@
 package com.example.demo.mail;
 
-import com.example.demo.category.CoursesRepository;
+import com.example.demo.category.CourseFacade;
+import com.example.demo.category.DefaultCourseFacade;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class MailService {
-    private final CoursesRepository coursesRepository;
+    private final CourseFacade courseFacade;
 
     private final MailSender mailSender;
 
-   public MailService(CoursesRepository coursesRepository, MailSender mailSender) {
-        this.coursesRepository = coursesRepository;
+    public MailService(CourseFacade courseFacade, MailSender mailSender) {
+        this.courseFacade = courseFacade;
         this.mailSender = mailSender;
     }
 
     public void send(String address, List<Long> ids) {
         String mailContent = ids.stream()
-                .map(id -> coursesRepository.findById(id))
+                .map(id -> courseFacade.getCoursesRepository(id))
                 .filter(item -> item.isPresent())
                 .map(item -> item.get())
                 .map(item -> item.getName() + " " + item.getDescription())

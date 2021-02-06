@@ -1,9 +1,9 @@
-package com.example.demo.category;
+package com.example.demo.models;
 
 import javax.persistence.*;
 
 @Entity
-class Subcategory {
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -12,10 +12,10 @@ class Subcategory {
     @ManyToOne
     private Category category;
 
-    Subcategory() {
+    public Subcategory() {
     }
 
-    Subcategory(String name, String description, Category category) {
+    public Subcategory(String name, String description, Category category) {
         this.name = name;
         this.description = description;
         this.category = category;
