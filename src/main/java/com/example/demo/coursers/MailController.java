@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RestController("/mail")
+@RestController
 class MailController {
     private final MailService mailService;
 
@@ -17,7 +17,7 @@ class MailController {
         this.mailService = mailService;
     }
 
-    @PostMapping
+    @PostMapping("/mail")
      void send(@RequestBody MailDTO mailDTO){
          mailService.send(mailDTO.getAddress(), mailDTO.getIds());
     }
