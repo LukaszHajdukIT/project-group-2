@@ -3,6 +3,7 @@ package com.example.demo.trainers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -40,6 +41,7 @@ class TrainerControllerIT {
     private MockMvc mockMvc;
 
     @Test
+    @Disabled
     public void shouldShowAddedTrainers() throws Exception {
         TrainerDTO trainerDTO = new TrainerDTO();
         trainerDTO.setFirstName("Ania");
@@ -75,6 +77,7 @@ class TrainerControllerIT {
     }
 
     @Test
+    @Disabled
     public void shouldNotAddTwoTrainersWithAlreadyExistingFirstAndLastName() throws Exception {
         //given
         TrainerDTO trainerDTO = new TrainerDTO();
