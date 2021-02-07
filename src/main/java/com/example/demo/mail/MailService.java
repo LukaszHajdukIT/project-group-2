@@ -20,8 +20,9 @@ public class MailService {
                 .map(id -> courseFacade.getCoursesRepository(id))
                 .filter(item -> item.isPresent())
                 .map(item -> item.get())
-                .map(item -> item.getName() + " " + item.getDescription())
+                .map(item -> item.getName() + " - " + item.getDescription())
                 .collect(Collectors.joining("\n"));
-        mailSender.send(address, "INQOO - courses offer", mailContent);
+        mailSender.send(address, "INQOO - courses offer", "Welcome, \nyou ordered the following courses:\n" + mailContent + "\nBest regards, \n" +
+                "INQOO TEAM ");
     }
 }
