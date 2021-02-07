@@ -1,7 +1,6 @@
 package com.example.demo.mail;
 
 import com.example.demo.category.CourseFacade;
-import com.example.demo.category.DefaultCourseFacade;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +22,6 @@ public class MailService {
                 .map(item -> item.get())
                 .map(item -> item.getName() + " " + item.getDescription())
                 .collect(Collectors.joining("\n"));
-        mailSender.send(address, "subject", mailContent);
+        mailSender.send(address, "INQOO - courses offer", mailContent);
     }
 }
